@@ -1,0 +1,24 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+/app/build
+/app/release
+*.keystore
+.kotlin/
+# Downloaded models are huge — never commit
+/models/*.litertlm
+/models/*.task
+# Extracted SDK AARs and stray APKs from adb installs
+/tmp/
+*.apk
+*.aar
+# Any per-user overrides
+*.local.*
+.git-backup/

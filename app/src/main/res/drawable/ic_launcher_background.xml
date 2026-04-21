@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    VicinoLLM adaptive-icon background layer.
+    Diagonal gradient from a deep purple to the brand's accent lavender.
+    Kept fully vector so it scales cleanly at any density.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path android:pathData="M0,0 H108 V108 H0 Z">
+        <aapt:attr xmlns:aapt="http://schemas.android.com/aapt" name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="108"
+                android:endY="108">
+                <item android:offset="0.0" android:color="#1F1233" />
+                <item android:offset="0.55" android:color="#40325E" />
+                <item android:offset="1.0" android:color="#8C6EE0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Soft noise dots for a subtle "compute grid" texture, drawn faint. -->
+    <path
+        android:fillColor="#33FFFFFF"
+        android:pathData="M24,28 m-1.2,0 a1.2,1.2 0 1,0 2.4,0 a1.2,1.2 0 1,0 -2.4,0 Z" />
+    <path
+        android:fillColor="#22FFFFFF"
+        android:pathData="M84,22 m-1,0 a1,1 0 1,0 2,0 a1,1 0 1,0 -2,0 Z" />
+    <path
+        android:fillColor="#22FFFFFF"
+        android:pathData="M18,90 m-1,0 a1,1 0 1,0 2,0 a1,1 0 1,0 -2,0 Z" />
+    <path
+        android:fillColor="#33FFFFFF"
+        android:pathData="M92,86 m-1.4,0 a1.4,1.4 0 1,0 2.8,0 a1.4,1.4 0 1,0 -2.8,0 Z" />
+</vector>

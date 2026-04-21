@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.GemmaServer" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary — Material3 dynamic palette falls back to these. -->
+        <item name="colorPrimary">@color/gs_primary</item>
+        <item name="colorOnPrimary">@color/gs_on_primary</item>
+        <item name="colorPrimaryContainer">@color/gs_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/gs_on_primary_container</item>
+        <item name="colorSecondary">@color/gs_secondary</item>
+        <item name="colorSecondaryContainer">@color/gs_secondary_container</item>
+        <item name="colorSurface">@color/gs_surface</item>
+        <item name="colorSurfaceVariant">@color/gs_surface_variant</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorSurface</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
+    </style>
+
+    <!-- Pill-shaped highlight behind the selected bottom-nav item. Matches
+         Material3 BottomNavigation defaults but retinted to our palette.
+         Parent is set explicitly because we don't otherwise define an
+         App.BottomNav parent style, and Android treats dotted names as
+         inheritance at resource-link time. -->
+    <style name="BottomNavActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:width">56dp</item>
+        <item name="android:height">40dp</item>
+        <item name="android:color">@color/gs_primary_container</item>
+        <item name="marginHorizontal">4dp</item>
+    </style>
+</resources>

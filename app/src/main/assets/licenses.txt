@@ -1,0 +1,112 @@
+VicinoLLM — third-party notices
+==============================
+
+This app bundles or depends on the following third-party software. Each
+component remains under its own license; we're only required to reproduce
+the notices below in distributed binaries. The app itself is released
+under the Apache License 2.0.
+
+
+--------------------------------------------------------------------------------
+LiteRT-LM (com.google.ai.edge.litertlm:litertlm-android:0.10.2)
+--------------------------------------------------------------------------------
+Copyright 2025 Google LLC
+Licensed under the Apache License, Version 2.0.
+https://github.com/google-ai-edge/LiteRT-LM
+
+You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+
+
+--------------------------------------------------------------------------------
+Ktor (io.ktor:ktor-server-*:3.0.3)
+--------------------------------------------------------------------------------
+Copyright 2016-2024 JetBrains s.r.o.
+Licensed under the Apache License, Version 2.0.
+https://github.com/ktorio/ktor
+
+
+--------------------------------------------------------------------------------
+kotlinx.coroutines, kotlinx.serialization
+--------------------------------------------------------------------------------
+Copyright 2016-2024 JetBrains s.r.o. and contributors.
+Licensed under the Apache License, Version 2.0.
+https://github.com/Kotlin/kotlinx.coroutines
+https://github.com/Kotlin/kotlinx.serialization
+
+
+--------------------------------------------------------------------------------
+AndroidX (core-ktx, appcompat, fragment-ktx, viewpager2, recyclerview)
+--------------------------------------------------------------------------------
+Copyright The Android Open Source Project.
+Licensed under the Apache License, Version 2.0.
+https://android.googlesource.com/platform/frameworks/support/
+
+
+--------------------------------------------------------------------------------
+Material Components for Android (com.google.android.material:material:1.12.0)
+--------------------------------------------------------------------------------
+Copyright 2016-2024 The Android Open Source Project.
+Licensed under the Apache License, Version 2.0.
+https://github.com/material-components/material-components-android
+
+
+--------------------------------------------------------------------------------
+highlight.js 11.9.0 (bundled in /assets/webui/assets/hljs.min.js)
+--------------------------------------------------------------------------------
+Copyright (c) 2006, Ivan Sagalaev. All rights reserved.
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+  * Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+  * Neither the name of highlight.js nor the names of its contributors may
+    be used to endorse or promote products derived from this software
+    without specific prior written permission.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES … (BSD 3-Clause)
+https://github.com/highlightjs/highlight.js
+
+
+================================================================================
+Apache License 2.0 (full text)
+================================================================================
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use these files except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+
+================================================================================
+Model license note (IMPORTANT — not bundled but relevant)
+================================================================================
+
+Model files (*.litertlm) are NOT bundled with this app. Users must download
+them themselves from Hugging Face and accept the individual model's license
+before use. In particular:
+
+  * Gemma models are subject to the Gemma Terms of Use at
+    https://ai.google.dev/gemma/terms — in particular, the Gemma Prohibited
+    Use Policy restricts operating Gemma as a paid hosted inference service.
+    VicinoLLM is distributed free of charge; users run it on their own device.
+
+  * Other supported models (Mistral, Qwen, Phi-4, SmolLM) carry their own
+    upstream licenses (Apache 2.0, MIT, etc.) — check the model card on
+    Hugging Face before use.
+
+VicinoLLM itself is a transport/UI layer and does not claim rights over any
+model weights it loads.

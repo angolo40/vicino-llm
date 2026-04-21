@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    VicinoLLM adaptive-icon foreground.
+    A stylised "V" whose two diagonals converge on a small dot at the
+    bottom vertex — the dot is the token being generated, "close to you"
+    (vicino = near in Italian).
+    Kept inside the 66dp/108dp safe area mandated by the adaptive-icon
+    spec so system masks don't clip the glyph.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Soft rounded pad behind the V for optical grounding. Low-alpha
+         white on the background layer's primary-container purple. -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.07"
+        android:pathData="M30,28 L78,28 A10,10 0 0 1 88,38 L88,78 A10,10 0 0 1 78,88 L30,88 A10,10 0 0 1 20,78 L20,38 A10,10 0 0 1 30,28 Z" />
+
+    <!-- Left diagonal of the V. Drawn as a quadrilateral so we control
+         stroke thickness precisely and stay crisp at every raster size. -->
+    <path
+        android:fillColor="#F6ECFF"
+        android:pathData="M34,36 L42,36 L58,72 L54,80 Z" />
+
+    <!-- Right diagonal of the V. -->
+    <path
+        android:fillColor="#F6ECFF"
+        android:pathData="M74,36 L66,36 L50,72 L54,80 Z" />
+
+    <!-- The token dot — the "vicino" mark. Sits right below the V's
+         vertex so the two diagonals feel like they're pouring into it. -->
+    <path
+        android:fillColor="#FFD27A"
+        android:pathData="M54,84 m-5.5,0 a5.5,5.5 0 1,0 11,0 a5.5,5.5 0 1,0 -11,0 Z" />
+</vector>

@@ -1,0 +1,25 @@
+# Expected SHA256 checksums for LiteRT-LM Gemma model files.
+#
+# Format:  <sha256-hex>  <filename>
+#
+# One entry per file. Lines starting with '#' are ignored.
+# The fetch-and-deploy-model.sh script reads this file to verify integrity
+# after download. Missing entries → warn+continue, record what you got.
+#
+# HOW TO POPULATE AN ENTRY:
+#   1. Open https://huggingface.co/litert-community/<model>-litert-lm
+#   2. Click the file in the "Files and versions" tab
+#   3. The SHA256 is shown in the sidebar next to the size
+#   4. Paste it here, tab or double-space, then the filename
+#
+# Verified entries:
+# (none yet)
+
+# TODO: verify hash for gemma-4-E4B-it on first download (HF did not publish
+# a SHA256 on the card at the time of writing). The script will print the
+# actual hash after a successful pull — copy it here to lock it in.
+
+# TODO: verify hash for gemma-4-E2B-it on first download
+
+# Example format (do NOT rely on this value — for reference only):
+# 2cbff161177a4d51c9d04360016185976f504517ba5758cd10c1564e5421c5a5  gemma-4-E2B-it-web.litertlm

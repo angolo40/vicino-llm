@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VicinoLLM</string>
+    <string name="app_subtitle">your LLM, close to you — never in the cloud</string>
+    <string name="phase_label">v1 · streaming · multimodal · web search</string>
+
+    <string name="tab_server">Server</string>
+    <string name="tab_models">Models</string>
+    <string name="tab_settings">Settings</string>
+    <string name="tab_log">Log</string>
+    <string name="tab_about">About</string>
+
+    <string name="about_tagline">VicinoLLM runs a local OpenAI-compatible HTTP server on this device. Point any OpenAI-compatible client at http://&lt;phone-ip&gt;:8080/v1 — the chat stays on your LAN.</string>
+    <string name="about_support_title">Support the project</string>
+    <string name="about_support_body">VicinoLLM is free. If it\'s useful to you, a small tip keeps development going.</string>
+    <string name="about_source">Source</string>
+    <string name="about_xmr_copy">Copy address</string>
+    <string name="about_crypto_copied_fmt">%1$s address copied</string>
+
+    <string name="about_license_title">Licenses</string>
+    <string name="about_license_body">VicinoLLM itself is released under the Apache License 2.0. It depends on LiteRT-LM (Apache 2.0), Ktor (Apache 2.0), Material Components (Apache 2.0), highlight.js (BSD-3), and AndroidX libraries (Apache 2.0).</string>
+    <string name="about_view_licenses">View full third-party notices</string>
+
+    <string name="about_model_terms_title">Model terms (important)</string>
+    <string name="about_model_terms_body">Model files (*.litertlm) are not bundled. You download them yourself and the upstream license applies — Gemma Terms of Use forbid paid hosted-inference services, so VicinoLLM is free by design.</string>
+
+    <string name="loaded_models_title">Loaded models</string>
+    <string name="no_models_loaded_hint">Nothing loaded — pick one below.</string>
+    <string name="available_models_title">Available on device</string>
+    <string name="curl_examples_title">Quick curl</string>
+    <string name="log_hint">Last 50 HTTP events (in-memory).</string>
+
+    <!-- Section headers -->
+    <string name="section_backend">Backend &amp; restore</string>
+    <string name="section_model">Model</string>
+    <string name="section_sampling">Sampling defaults</string>
+    <string name="section_test">Test prompt</string>
+    <string name="section_server">Server</string>
+    <string name="section_log">Request log</string>
+
+    <!-- Backend -->
+    <string name="backend_label">Backend</string>
+    <string name="backend_gpu">GPU</string>
+    <string name="backend_cpu">CPU</string>
+    <string name="backend_hint">Default GPU. Switch to CPU if the Mali driver on the S10 crashes or outputs garbage.</string>
+    <string name="auto_restore_label">Auto-restore last model + start server on app launch</string>
+    <string name="auto_restore_tripped_hint">⚠︎ Auto-restore was paused: the last model was killed repeatedly for memory pressure. Switch to a smaller model (e.g. Gemma 4 E2B) and toggle auto-restore off/on to re-enable.</string>
+
+    <string name="settings_secrets_title">Secrets</string>
+    <string name="hf_token_label">Hugging Face token (optional)</string>
+    <string name="hf_token_hint">Required to download gated models like Gemma. Get one at huggingface.co/settings/tokens.</string>
+    <string name="server_key_label">Server API key (optional)</string>
+    <string name="server_key_hint">If set, clients must send Authorization: Bearer &lt;key&gt;. Leave empty to keep the server open on LAN.</string>
+
+    <string name="section_web_search">Web search (SearXNG)</string>
+    <string name="searxng_url_label">SearXNG base URL</string>
+    <string name="searxng_url_hint">Optional. When set, the web UI shows a 🌐 toggle that augments replies with live search results. Prefer a self-hosted instance — public ones can see every query.</string>
+    <string name="searxng_test">Test connection</string>
+    <string name="searxng_rewrite_label">Rewrite query before searching</string>
+    <string name="searxng_rewrite_hint">Asks the model to turn your message into tight search keywords first (+1–2 s per request, but much better results).</string>
+    <string name="searxng_status_ok">Reachable ✓</string>
+    <string name="searxng_status_fail">Unreachable — check the URL</string>
+    <string name="searxng_status_empty">Enter a URL first</string>
+    <string name="searxng_status_testing">Testing…</string>
+
+    <string name="download_title">Download curated models</string>
+    <string name="download_row_meta_fmt">%1$s · %2$s</string>
+    <string name="download_action">Download</string>
+    <string name="download_action_cancel">Cancel</string>
+    <string name="download_progress_fmt">%1$d%% · %2$d / %3$d MiB</string>
+    <string name="download_done">Download complete — refresh list.</string>
+    <string name="download_failed_fmt">Download failed: %1$s</string>
+    <string name="download_cancelled">Download cancelled.</string>
+    <string name="auto_restoring_fmt">Restoring last session: %1$s…</string>
+    <string name="auto_restore_missing_fmt">Last model %1$s no longer on device — ignoring.</string>
+
+    <!-- Model -->
+    <string name="model_label">Model</string>
+    <string name="refresh">Refresh</string>
+    <string name="load_model">Load / Add</string>
+    <string name="unload_model">Unload</string>
+    <string name="unload_all">Unload all</string>
+    <string name="no_model_loaded">No model loaded · server will return 503 on /v1/*</string>
+    <string name="model_loaded_fmt">Loaded: %1$s (%2$s)</string>
+    <string name="models_loaded_multi_fmt">Loaded models: %1$s</string>
+    <string name="model_loading_fmt">Loading %1$s… this can take up to a minute on first run</string>
+    <string name="no_models_found">No *.litertlm files found — push one via adb</string>
+    <string name="model_heavy_dialog_title">Heavy model on a tight-RAM device</string>
+    <string name="model_heavy_dialog_body">%1$s is a large model (&gt;2.5 GB) and your device has less than 12 GB of RAM. Samsung OneUI and similar aggressive memory managers are likely to kill the server during inference, putting the app in a restart loop.\n\nThe smaller Gemma 4 E2B model is usually a better fit — similar quality, roughly 1/3 the RAM footprint.\n\nProceed anyway?</string>
+    <string name="model_heavy_dialog_proceed">Load anyway</string>
+    <string name="model_heavy_dialog_cancel">Cancel</string>
+
+    <!-- Sampling -->
+    <string name="sampling_hint">Fallback values when a client request doesn\'t include the field.</string>
+    <string name="label_temperature_fmt">temperature: %1$.2f</string>
+    <string name="label_top_p_fmt">top_p: %1$.2f</string>
+    <string name="label_top_k_fmt">top_k: %1$d</string>
+    <string name="label_max_tokens_fmt">max_tokens: %1$d</string>
+    <string name="label_context_window_fmt">context window: %1$d tokens</string>
+    <string name="context_window_hint">Applied at model load. Larger = more KV cache RAM. Reload model to change.</string>
+    <string name="sampling_hint_temperature">How creative vs predictable. 0 = always the most likely word (deterministic). 1 = balanced. 2 = very random, can ramble. Start at 0.8.</string>
+    <string name="sampling_hint_top_p">Nucleus sampling. Keeps only the smallest set of words whose combined probability ≥ P. Lower = safer, more on-topic. 0.95 is a healthy default.</string>
+    <string name="sampling_hint_top_k">Sample only from the K most-likely words at each step. Lower K = more focused, less variety. 40 is a healthy default.</string>
+    <string name="sampling_hint_max_tokens">Cap on the length of each REPLY. Hit it and the model stops mid-sentence with finish_reason=length. Keeps runaway replies short.</string>
+    <string name="sampling_hint_context_window">Size of the model\'s working memory (KV cache). Includes full chat history. Larger = longer memory but more RAM. Applied at model LOAD — reload after change.</string>
+    <string name="reset_defaults">Reset</string>
+    <string name="settings_reload_hint">Context window applied at model load. Reload the model to take effect.</string>
+
+    <!-- Test prompt -->
+    <string name="test_prompt_label">Test prompt (tries the engine directly, bypasses HTTP)</string>
+    <string name="test_prompt_hint">Type a prompt…</string>
+    <string name="test_prompt_default">Hello, introduce yourself in one sentence.</string>
+    <string name="test_run">Run</string>
+    <string name="test_stats_fmt">%1$d prompt tok · %2$d completion tok · %3$d ms · %4$.1f tok/s</string>
+    <string name="test_error_fmt">Error: %1$s</string>
+
+    <!-- Server -->
+    <string name="lan_address_label">LAN address</string>
+    <string name="lan_address_placeholder">—</string>
+    <string name="port_label">Port</string>
+    <string name="default_port">8080</string>
+    <string name="start_server">Start server</string>
+    <string name="stop_server">Stop server</string>
+    <string name="status_stopped">stopped</string>
+    <string name="status_running">running</string>
+    <string name="request_count_placeholder">0 requests</string>
+    <string name="hint_curl">curl http://&lt;ip&gt;:&lt;port&gt;/health</string>
+    <string name="notification_permission_denied">Notification permission denied — persistent notification will be suppressed.</string>
+
+    <!-- Permissions screen -->
+    <string name="perm_title">Permissions</string>
+    <string name="perm_subtitle">VicinoLLM needs a few permissions to run reliably. Grant the critical ones to avoid the server being killed in the background.</string>
+    <string name="perm_status_granted">✓ Granted</string>
+    <string name="perm_status_denied">Not granted</string>
+    <string name="perm_status_needs_settings">Opens Settings</string>
+    <string name="perm_grant">Grant</string>
+    <string name="perm_continue">Continue</string>
+    <string name="perm_all_granted_hint">All critical permissions granted. You can close this screen.</string>
+    <string name="perm_critical_badge">Critical</string>
+    <string name="perm_optional_badge">Optional</string>
+
+    <string name="perm_notifications_title">Notifications</string>
+    <string name="perm_notifications_body">Required on Android 13+ so the foreground service can show its persistent notification. Without it the OS will not let the server keep running in the background.</string>
+
+    <string name="perm_battery_title">Ignore battery optimization</string>
+    <string name="perm_battery_body">Samsung aggressively kills foreground services for "memory pressure". Adding VicinoLLM to the battery-optimization whitelist is what keeps the LLM server alive on OneUI.</string>
+
+    <string name="perm_storage_title">All-files access (MANAGE_EXTERNAL_STORAGE)</string>
+    <string name="perm_storage_body">Optional. Lets VicinoLLM read *.litertlm models from /sdcard/Models/. Without it the app falls back to its private /Android/data/com.sectl.litertlm.server/files/ folder.</string>
+
+    <string name="perm_banner_text">Some permissions are missing — the server may be unreliable until you grant them.</string>
+    <string name="perm_banner_action">Review</string>
+    <string name="perm_ok_pill">✓ Permissions OK · tap to review</string>
+</resources>

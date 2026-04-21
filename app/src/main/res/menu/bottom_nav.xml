@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_server"
+        android:icon="@drawable/ic_nav_server"
+        android:title="@string/tab_server" />
+    <item
+        android:id="@+id/nav_models"
+        android:icon="@drawable/ic_nav_models"
+        android:title="@string/tab_models" />
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_nav_settings"
+        android:title="@string/tab_settings" />
+    <item
+        android:id="@+id/nav_log"
+        android:icon="@drawable/ic_nav_log"
+        android:title="@string/tab_log" />
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/ic_nav_about"
+        android:title="@string/tab_about" />
+</menu>

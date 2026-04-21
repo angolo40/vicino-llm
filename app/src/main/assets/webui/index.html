@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101114">
+  <title>VicinoLLM</title>
+  <link rel="stylesheet" href="/assets/app.css?v=v110">
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%2340325E%22/><path d=%22M6 9 L10 9 L14 22 L12 26 Z%22 fill=%22%23F6ECFF%22/><path d=%22M26 9 L22 9 L18 22 L12 26 Z%22 fill=%22%23F6ECFF%22/><circle cx=%2216%22 cy=%2227%22 r=%222.5%22 fill=%22%23FFD27A%22/></svg>">
+</head>
+<body>
+
+<div id="app" class="layout">
+
+  <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar__head">
+      <div class="brand">
+        <svg class="brand__mark" viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#40325E"/>
+          <path d="M6 9 L10 9 L14 22 L12 26 Z" fill="#F6ECFF"/>
+          <path d="M26 9 L22 9 L18 22 L12 26 Z" fill="#F6ECFF"/>
+          <circle cx="16" cy="27" r="2.5" fill="#FFD27A"/>
+        </svg>
+        <span class="brand__name">VicinoLLM</span>
+      </div>
+      <button id="newChatBtn" class="btn btn--primary" title="New chat (Ctrl+K)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        <span>New chat</span>
+      </button>
+    </div>
+    <ul id="chatList" class="chat-list"></ul>
+    <div class="sidebar__foot">
+      <div id="healthLine" class="health-line"></div>
+      <div class="sidebar__foot-row">
+        <button id="aboutBtn" class="link-btn" title="About">about</button>
+        <div class="theme-switch">
+          <button data-theme="auto" title="Auto">A</button>
+          <button data-theme="dark" title="Dark">🌙</button>
+          <button data-theme="light" title="Light">☀</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main id="main" class="main">
+    <header class="main__head">
+      <button id="sidebarToggle" class="icon-btn" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <select id="modelSelect" class="select" title="Model"></select>
+      <button id="modelsBtn" class="icon-btn" aria-label="Models" title="Manage models">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+      </button>
+      <button id="settingsBtn" class="icon-btn" aria-label="Settings" title="Sampling (⌘,)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
+      <button id="exportBtn" class="icon-btn" aria-label="Export" title="Export">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </header>
+
+    <section id="systemPrompt" class="system-prompt">
+      <details>
+        <summary>System prompt</summary>
+        <textarea id="systemPromptInput" rows="2" placeholder="(optional) You are a helpful assistant."></textarea>
+      </details>
+    </section>
+
+    <section id="messages" class="messages"></section>
+
+    <footer class="composer">
+      <input type="file" id="imagePicker" accept="image/*,application/pdf,audio/*" hidden />
+      <button id="attachBtn" class="btn btn--attach" title="Attach image, PDF or audio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+      </button>
+      <button id="micBtn" class="btn btn--attach" title="Push to talk (hold, release to attach)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </button>
+      <button id="webSearchBtn" class="btn btn--attach" title="Web search (SearXNG) — toggle to augment next reply with live results" hidden>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </button>
+      <div id="attachmentsBar" class="attachments" hidden></div>
+      <textarea id="composerInput" rows="1" placeholder="Message…" autofocus></textarea>
+      <button id="sendBtn" class="btn btn--send" title="Send (Enter)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+      <button id="stopBtn" class="btn btn--stop" title="Stop" hidden>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12"/></svg>
+      </button>
+    </footer>
+  </main>
+
+  <div id="settingsModal" class="modal" hidden>
+    <div class="modal__card modal__card--wide">
+      <header class="modal__head">
+        <h2>Sampling</h2>
+        <button class="icon-btn" data-close>✕</button>
+      </header>
+      <div class="modal__body">
+
+        <label class="param">
+          <span class="param__head">
+            <span class="param__name">Temperature</span>
+            <span id="tempVal" class="param__val"></span>
+          </span>
+          <input id="temp" type="range" min="0" max="2" step="0.05">
+          <span class="param__hint">How creative vs predictable. 0 = always pick the most likely word (deterministic). 1 = balanced. 2 = very random, can ramble. Start at 0.8.</span>
+        </label>
+
+        <label class="param">
+          <span class="param__head">
+            <span class="param__name">Top P</span>
+            <span id="topPVal" class="param__val"></span>
+          </span>
+          <input id="topP" type="range" min="0" max="1" step="0.01">
+          <span class="param__hint">Nucleus sampling. Keeps only the smallest set of words whose combined probability ≥ P. Lower = safer, more on-topic. Keep at 0.95 unless you know what you need.</span>
+        </label>
+
+        <label class="param">
+          <span class="param__head">
+            <span class="param__name">Top K</span>
+            <span id="topKVal" class="param__val"></span>
+          </span>
+          <input id="topK" type="range" min="1" max="200" step="1">
+          <span class="param__hint">Sample only from the K most-likely words at each step. Lower K = more focused, less variety. 40 is a healthy default.</span>
+        </label>
+
+        <label class="param">
+          <span class="param__head">
+            <span class="param__name">Max tokens</span>
+            <span id="maxTokVal" class="param__val"></span>
+          </span>
+          <input id="maxTok" type="range" min="16" max="4096" step="16">
+          <span class="param__hint">Cap on the length of each REPLY. Hit it and the model stops mid-sentence with finish_reason=length. Keeps runaway replies short.</span>
+        </label>
+
+        <label class="param">
+          <span class="param__head">
+            <span class="param__name">Context window</span>
+            <span id="ctxVal" class="param__val"></span>
+          </span>
+          <input id="ctx" type="range" min="1024" max="32768" step="1024">
+          <span class="param__hint">Size of the model's working memory (KV cache). Includes full chat history. Larger = longer memory but more RAM. Applied at model LOAD — reload after change.</span>
+        </label>
+
+        <label class="param param--inline">
+          <input id="stream" type="checkbox" checked>
+          <span>
+            <span class="param__name">Stream responses</span>
+            <span class="param__hint">Show tokens as they arrive (feels faster). Turn off to get the full reply at once.</span>
+          </span>
+        </label>
+
+        <label class="param">
+          <span class="param__head">
+            <span class="param__name">Seed</span>
+            <span id="seedVal" class="param__val"></span>
+          </span>
+          <input id="seed" type="number" min="0" max="2147483647" placeholder="0 = random" value="0">
+          <span class="param__hint">Pick a number to get the same reply to the same prompt every time. 0 = random (default). Useful for debugging.</span>
+        </label>
+
+        <div class="modal__footer">
+          <button class="btn" id="samplingResetBtn">Reset to defaults</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="aboutModal" class="modal" hidden>
+    <div class="modal__card">
+      <header class="modal__head">
+        <h2>About VicinoLLM</h2>
+        <button class="icon-btn" data-close>✕</button>
+      </header>
+      <div class="modal__body">
+        <p class="about-tagline">Local OpenAI-compatible LLM server on Android. Point any OpenAI client at <code id="aboutBaseUrl"></code> and chat offline.</p>
+
+        <h3 class="about-h">Support</h3>
+        <p>VicinoLLM is free. If it helps you, a small tip keeps it going. No accounts, no KYC — just scan the QR or copy the address.</p>
+        <div id="cryptoCards" class="crypto-cards"></div>
+        <div class="about-actions" style="margin-top:14px;">
+          <a id="sourceLink" class="btn" target="_blank" rel="noopener">Source</a>
+        </div>
+
+        <h3 class="about-h">Licenses</h3>
+        <p class="about-body">This app is released under the Apache License 2.0. It builds on LiteRT-LM (Apache 2.0), Ktor (Apache 2.0), Material Components (Apache 2.0), highlight.js (BSD-3), AndroidX libraries (Apache 2.0).</p>
+
+        <h3 class="about-h">Model terms</h3>
+        <p class="about-body">Model files are <em>not</em> bundled. You download them yourself and the upstream license applies. Gemma Terms of Use forbid paid hosted inference services — VicinoLLM stays free by design.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modelsModal" class="modal" hidden>
+    <div class="modal__card modal__card--wide">
+      <header class="modal__head">
+        <h2>Models</h2>
+        <button class="icon-btn" data-close>✕</button>
+      </header>
+      <div class="modal__body">
+        <div class="models-toolbar">
+          <span id="modelsCount" class="models-count"></span>
+          <div class="models-toolbar__right">
+            <label class="backend-pick">
+              Backend
+              <select id="loadBackend" class="select select--sm">
+                <option value="gpu">GPU</option>
+                <option value="cpu">CPU</option>
+              </select>
+            </label>
+            <button class="btn" id="modelsRefresh">Refresh</button>
+          </div>
+        </div>
+        <ul id="modelsList" class="models-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="exportDialog" class="modal" hidden>
+    <div class="modal__card">
+      <header class="modal__head">
+        <h2>Export current chat</h2>
+        <button class="icon-btn" data-close>✕</button>
+      </header>
+      <div class="modal__body">
+        <button class="btn btn--primary" id="exportMd">Download as Markdown</button>
+        <button class="btn" id="exportJson">Download as JSON</button>
+        <button class="btn" id="copyChat">Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="/assets/hljs.min.js" defer></script>
+<script src="/assets/qrcode.min.js?v=v110" defer></script>
+<script>
+  // pdf.js is an ESM module that loads async — expose a promise so the app
+  // can await readiness instead of checking window.pdfjsLib at click time.
+  window.pdfjsReady = new Promise(resolve => { window.__resolvePdfjs = resolve; });
+</script>
+<script type="module">
+  import * as pdfjs from "/assets/pdf.min.mjs?v=v110";
+  pdfjs.GlobalWorkerOptions.workerSrc = "/assets/pdf.worker.min.mjs?v=v110";
+  window.pdfjsLib = pdfjs;
+  window.__resolvePdfjs(pdfjs);
+</script>
+<script src="/assets/app.js?v=v110" defer></script>
+</body>
+</html>

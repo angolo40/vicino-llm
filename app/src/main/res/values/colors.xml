@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark-first Material3-ish palette. The specific purple picks a
+         "developer-tool" vibe similar to Ktor / JetBrains, but muted enough
+         to read all day. -->
+    <color name="gs_primary">#BB9DF0</color>
+    <color name="gs_on_primary">#231542</color>
+    <color name="gs_primary_container">#40325E</color>
+    <color name="gs_on_primary_container">#E8DDFF</color>
+
+    <color name="gs_secondary">#8EC7FF</color>
+    <color name="gs_secondary_container">#263B53</color>
+
+    <color name="gs_surface">#101114</color>
+    <color name="gs_surface_variant">#1B1D22</color>
+
+    <color name="gs_success">#4CD964</color>
+    <color name="gs_error">#FF6B6B</color>
+    <color name="gs_warn">#FFB454</color>
+    <color name="gs_mono_fg">#D4D4D4</color>
+    <color name="gs_mono_border">#2A2D33</color>
+</resources>
