@@ -480,14 +480,28 @@ class HttpServer(
         // same bearer check applied to external clients like OpenWebUI /
         // OpenClaw / the Python SDK.
         val uiHeader = call.request.headers["X-Vicino-UI"]
-        val sameOriginReferer = call.request.headers["Referer"]?.let {
-            val host = call.request.host()
-            val port = call.request.port()
-            // Accept any referer whose authority matches this request's host,
-            // regardless of scheme — Android's WebView / Chrome may sanitise.
-            it.startsWith("http://$host:$port/") || it.startsWith("https://$host:$port/")
-        } ?: false
-        if (uiHeader == "1" && sameOriginReferer) return true
+        if (uiHeader == "1") {
+            val sameOriginReferer = call.request.headers["Referer"]?.let {
+                val host = call.request.host()
+                val port = call.request.port()
+                // Accept any referer whose authority matches this request's
+                // host, regardless of scheme — Android's WebView / Chrome may
+                // sanitise.
+                it.startsWith("http://$host:$port/") || it.startsWith("https://$host:$port/")
+            } ?: false
+            // When the user opens the UI from the phone itself
+            // (http://localhost:8080/), Chrome on Android strips the Referer
+            // on http-on-http Private Network requests (strict-origin-when-
+            // cross-origin default), and the host/port pair may come back as
+            // "::1" vs "[::1]" which breaks the string match above. Accept as
+            // long as the TCP peer is loopback — that's only reachable from
+            // this phone, so still safe.
+            val fromLoopback = call.request.origin.remoteHost.let {
+                it == "127.0.0.1" || it == "::1" || it == "localhost" ||
+                    it == "0:0:0:0:0:0:0:1" || it.startsWith("127.")
+            }
+            if (sameOriginReferer || fromLoopback) return true
+        }
 
         val header = call.request.headers["Authorization"].orEmpty()
         val token = when {
