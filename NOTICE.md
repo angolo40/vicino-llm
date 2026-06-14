@@ -48,7 +48,7 @@ requirements of the respective licenses.
 
 ### Google — LiteRT-LM SDK
 
-- Package: `com.google.ai.edge.litertlm:litertlm-android:0.10.2`
+- Package: `com.google.ai.edge.litertlm:litertlm-android:0.13.1`
 - License: Apache License 2.0
 - Upstream: <https://github.com/google-ai-edge/LiteRT-LM>
 - Used for: on-device model loading and inference (the sole reason this project

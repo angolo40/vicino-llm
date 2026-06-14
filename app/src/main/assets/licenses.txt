@@ -8,7 +8,7 @@ under the Apache License 2.0.
 
 
 --------------------------------------------------------------------------------
-LiteRT-LM (com.google.ai.edge.litertlm:litertlm-android:0.10.2)
+LiteRT-LM (com.google.ai.edge.litertlm:litertlm-android:0.13.1)
 --------------------------------------------------------------------------------
 Copyright 2025 Google LLC
 Licensed under the Apache License, Version 2.0.
