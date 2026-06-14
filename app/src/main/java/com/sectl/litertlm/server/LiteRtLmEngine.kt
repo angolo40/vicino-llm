@@ -15,7 +15,7 @@ import kotlinx.coroutines.sync.withLock
 /**
  * Real LiteRT-LM-backed inference engine. Ships in Phase 4 as the default.
  *
- * The LiteRT-LM SDK (com.google.ai.edge.litertlm:litertlm-android:0.10.2)
+ * The LiteRT-LM SDK (com.google.ai.edge.litertlm:litertlm-android:0.13.1)
  * is AutoCloseable on both [Engine] and [Conversation]. We hold one
  * persistent Engine and recreate Conversations lazily per-infer so sampler
  * parameters from each request can override the defaults.

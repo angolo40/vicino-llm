@@ -936,7 +936,7 @@ class HttpServer(
 
 // Compile-time constant for the LiteRT-LM version, shown in the 501 body.
 private object BuildConfigLike {
-    const val LITERTLM_VERSION = "0.10.2"
+    const val LITERTLM_VERSION = "0.13.1"
 }
 
 // /v1/search response shape — mirrored by the web UI "sources" box.
