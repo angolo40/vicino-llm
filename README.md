@@ -79,7 +79,7 @@ same Wi-Fi.
 
 ## Supported models
 
-LiteRT-LM 0.10.2 loads `.litertlm` bundles that pack a TFLite graph +
+LiteRT-LM 0.13.1 loads `.litertlm` bundles that pack a TFLite graph +
 vision/audio encoders + tokenizer. Officially supported today:
 
 | Model | Size | Vision | Audio | Context | Notes |
@@ -97,7 +97,7 @@ need other families.
 ## Tech stack
 
 - Kotlin **2.2.21**, AGP **8.9.1**, Gradle **8.11.1**, JDK 17
-- `com.google.ai.edge.litertlm:litertlm-android:0.10.2`
+- `com.google.ai.edge.litertlm:litertlm-android:0.13.1`
 - Ktor **3.0.3** CIO engine (Netty NIO is unusable on Android)
 - ZXing core 3.5.3 (QR rendering for the About tab)
 - Web UI: vanilla HTML/CSS/JS, pdf.js 4.7, qrcode-generator 1.4,
