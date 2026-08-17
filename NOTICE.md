@@ -1,4 +1,4 @@
-# NOTICE — VicinoLLM
+# NOTICE - VicinoLLM
 
 VicinoLLM
 Copyright 2026 [@angolo40](https://github.com/angolo40)
@@ -24,7 +24,7 @@ OpenAI-compatible client can talk to a model running on the phone.
 VicinoLLM is **not**:
 
 - A redistribution of Google's Gemma model weights.
-- A "Gemma Derivative" as defined in the Gemma Terms of Use — we do not train,
+- A "Gemma Derivative" as defined in the Gemma Terms of Use - we do not train,
   fine-tune, or modify any Gemma model.
 - A hosted inference service. The server listens only on the user's own LAN.
   Model weights are downloaded directly by the end user from
@@ -46,7 +46,7 @@ VicinoLLM. Each dependency retains its original copyright and license; the
 list below is provided for transparency and to satisfy the attribution
 requirements of the respective licenses.
 
-### Google — LiteRT-LM SDK
+### Google - LiteRT-LM SDK
 
 - Package: `com.google.ai.edge.litertlm:litertlm-android:0.13.1`
 - License: Apache License 2.0
@@ -54,7 +54,7 @@ requirements of the respective licenses.
 - Used for: on-device model loading and inference (the sole reason this project
   exists as an Android-first app).
 
-### JetBrains — Kotlin and Ktor
+### JetBrains - Kotlin and Ktor
 
 - Packages: `org.jetbrains.kotlin:*`, `io.ktor:ktor-server-core:3.0.3`,
   `io.ktor:ktor-server-cio:3.0.3`, `io.ktor:ktor-server-content-negotiation`,
@@ -63,7 +63,7 @@ requirements of the respective licenses.
 - License: Apache License 2.0
 - Upstream: <https://kotlinlang.org/>, <https://ktor.io/>
 
-### Google — Material Components for Android and AndroidX
+### Google - Material Components for Android and AndroidX
 
 - Packages: `com.google.android.material:material:1.12.0` and the AndroidX
   libraries listed in `gradle/libs.versions.toml`.
@@ -71,14 +71,14 @@ requirements of the respective licenses.
 - Upstream: <https://github.com/material-components/material-components-android>,
   <https://developer.android.com/jetpack/androidx>
 
-### Google — ZXing core
+### Google - ZXing core
 
 - Package: `com.google.zxing:core:3.5.3`
 - License: Apache License 2.0
 - Upstream: <https://github.com/zxing/zxing>
 - Used for: on-device QR code generation in the About tab's crypto tip jar.
 
-### Jonathan Hedley — Jsoup
+### Jonathan Hedley - Jsoup
 
 - Package: `org.jsoup:jsoup:1.17.2`
 - License: MIT License
@@ -86,7 +86,7 @@ requirements of the respective licenses.
 - Used for: HTML parsing in the optional web-search augmentation (fetches and
   cleans the top N SearXNG results before injecting them into the prompt).
 
-### Mozilla — pdf.js
+### Mozilla - pdf.js
 
 - Version: 4.7.76
 - License: Apache License 2.0
@@ -95,7 +95,7 @@ requirements of the respective licenses.
   Distributed as two files under `app/src/main/assets/webui/assets/pdf.min.mjs`
   and `pdf.worker.min.mjs`.
 
-### Kazuhiko Arase — qrcode-generator
+### Kazuhiko Arase - qrcode-generator
 
 - Version: 1.4.4
 - License: MIT License
@@ -130,7 +130,7 @@ LiteRT-LM's native `EngineConfig`. As of April 2026, that family is:
 
 These files are hosted by Google's `litert-community` organisation on
 Hugging Face. Downloading them requires the user to accept Google's Gemma
-Terms of Use directly with Google / Hugging Face — VicinoLLM does not
+Terms of Use directly with Google / Hugging Face - VicinoLLM does not
 relicense, mirror, or modify the model files.
 
 The Gemma Terms of Use are available at

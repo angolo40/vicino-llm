@@ -1,4 +1,4 @@
-# VicinoLLM — your LLM, close to you
+# VicinoLLM - your LLM, close to you
 
 **v1.0.1** · Kotlin · Ktor · LiteRT-LM · Gemma 4
 
@@ -8,13 +8,13 @@
 
 VicinoLLM turns your Android phone into a personal OpenAI-compatible LLM
 server. Load a Gemma 4 model once, then chat from any client that speaks
-the OpenAI API — the official Python/JS SDKs, LangChain, llama.cpp
+the OpenAI API - the official Python/JS SDKs, LangChain, llama.cpp
 clients, OpenWebUI, whatever. The phone runs the inference, your LAN
 carries the traffic, nothing touches a cloud.
 
 A bundled web UI (ChatGPT-style, dark, multi-chat, markdown, themes,
 push-to-talk, drag-and-drop images/PDF/audio) is served from the same
-`:8080` endpoint — open `http://<phone-ip>:8080/` in any browser on the
+`:8080` endpoint - open `http://<phone-ip>:8080/` in any browser on the
 same Wi-Fi.
 
 > ⚠️ **LAN-only.** Port 8080 exposes full inference to anyone who can
@@ -33,17 +33,17 @@ same Wi-Fi.
   `/v1/models`, `/v1/models/load`, `DELETE /v1/models/{id}`,
   `/v1/embeddings` → 501). Polymorphic `content` field: plain string or
   multimodal parts array.
-- **Server-Sent Events streaming** — both text and multimodal requests
+- **Server-Sent Events streaming** - both text and multimodal requests
   stream token-by-token via `Flow<Message>` from the LiteRT-LM SDK.
-- **Multi-model routing** — several engines can be loaded at once,
+- **Multi-model routing** - several engines can be loaded at once,
   request's `model` field picks which one.
-- **Multimodal in** — text + image(s) + audio. Images resized to 768 px
+- **Multimodal in** - text + image(s) + audio. Images resized to 768 px
   client-side before upload. PDFs rendered to page images via pdf.js
   (first 4 pages, model cap). Audio accepts WAV/MP3/OGG/M4A.
-- **Auto-restore** — after the Samsung low-memory killer terminates the
+- **Auto-restore** - after the Samsung low-memory killer terminates the
   service, `START_STICKY` brings it back and the last loaded model is
   reloaded automatically.
-- **503 on no model** — clients get a structured error, the web UI shows
+- **503 on no model** - clients get a structured error, the web UI shows
   a "reload the model" hint.
 
 ### Bundled web UI (`http://<phone-ip>:8080/`)
@@ -52,23 +52,23 @@ same Wi-Fi.
 - Markdown rendering with highlight.js fenced code
 - Streaming tokens as they arrive
 - Drag-and-drop or pick: images (`image/*`), PDFs (rendered via
-  pdf.js), audio (`audio/*`) — or **push-to-talk** via `MediaRecorder`
+  pdf.js), audio (`audio/*`) - or **push-to-talk** via `MediaRecorder`
   (requires HTTPS / localhost, see caveat below)
 - Themes: dark / light / auto
 - Sampling modal: temperature, top-p, top-k, max tokens, context
   window, stream toggle, seed, with plain-language hints
 - Crypto tip jar in About with tabbed QR codes generated
-  client-side — no Ko-fi / BMC / Stripe middleware
+  client-side - no Ko-fi / BMC / Stripe middleware
 - HTTP-safe clipboard fallback for `copy` (plain-HTTP LAN context)
 
 ### Android app (Material 3)
 
-- **Floating bottom navigation** (Instagram / Cake Wallet style) —
+- **Floating bottom navigation** (Instagram / Cake Wallet style) -
   Server · Models · Settings · Log · About
 - Live request log (last 50 requests, in-memory)
 - Model downloader with HF token support (curated list: Gemma 4 E2B /
   E4B), resumable via HTTP Range
-- Context-window slider (1 k – 32 k tokens, applied at load)
+- Context-window slider (1 k - 32 k tokens, applied at load)
 - Sampling defaults that fill in missing request fields
 - Foreground service with `FOREGROUND_SERVICE_TYPE_SPECIAL_USE` + a
   partial wake lock; persistent notification with IP, port, request
@@ -88,7 +88,7 @@ vision/audio encoders + tokenizer. Officially supported today:
 | **Gemma 4 E4B** | 3.65 GB | ✅ | ✅ | 32 k | Sharper, but OOM-prone on <12 GB RAM devices |
 
 Non-Gemma models (GLM-OCR, Qwen-VL, Phi-3.5-vision, …) are **not
-supported** — LiteRT-LM's pipeline is hardcoded for the Gemma
+supported** - LiteRT-LM's pipeline is hardcoded for the Gemma
 architecture. Use a different runtime (llama.cpp JNI, MLC-LLM) if you
 need other families.
 
@@ -101,7 +101,7 @@ need other families.
 - Ktor **3.0.3** CIO engine (Netty NIO is unusable on Android)
 - ZXing core 3.5.3 (QR rendering for the About tab)
 - Web UI: vanilla HTML/CSS/JS, pdf.js 4.7, qrcode-generator 1.4,
-  highlight.js — all bundled, no CDN at runtime
+  highlight.js - all bundled, no CDN at runtime
 - minSdk 31 (Android 12), targetSdk 34, `arm64-v8a` only
 - Zero Firebase / analytics / Play Services dependencies
 
@@ -141,7 +141,7 @@ Two ways.
 
 Open **VicinoLLM** → **Models** → browse the curated list. Tap
 **Download** (you'll be prompted for a Hugging Face token if the model
-is gated — paste it in Settings first). When the download finishes the
+is gated - paste it in Settings first). When the download finishes the
 button switches to **Load**. Tap it again to load the model into the
 engine.
 
@@ -164,14 +164,14 @@ Then tap **Refresh** in Models and **Load** the file.
 
 | Endpoint | Body | Notes |
 |---|---|---|
-| `GET /health` | — | `{"status":"ok","model":"…","backend":"gpu\|cpu\|none","loaded_models":[…]}` |
-| `GET /v1/models` | — | OpenAI-shape list of currently loaded engines |
-| `GET /v1/models/available` | — | (non-OpenAI) lists .litertlm files on device |
+| `GET /health` | - | `{"status":"ok","model":"…","backend":"gpu\|cpu\|none","loaded_models":[…]}` |
+| `GET /v1/models` | - | OpenAI-shape list of currently loaded engines |
+| `GET /v1/models/available` | - | (non-OpenAI) lists .litertlm files on device |
 | `POST /v1/models/load` | `{path, backend}` | Load a local file, returns when loading started |
-| `DELETE /v1/models/{id}` | — | Unload one engine by filename |
+| `DELETE /v1/models/{id}` | - | Unload one engine by filename |
 | `POST /v1/chat/completions` | OpenAI | Streaming via `stream:true`. Multimodal via content parts |
 | `POST /v1/completions` | OpenAI legacy | Raw `prompt` string, no chat template |
-| `POST /v1/embeddings` | OpenAI | Returns 501 — not implemented |
+| `POST /v1/embeddings` | OpenAI | Returns 501 - not implemented |
 
 Multimodal content shape (matches OpenAI):
 
@@ -190,10 +190,10 @@ Multimodal content shape (matches OpenAI):
 
 | Field | Default | Range |
 |---|---|---|
-| `temperature` | 0.8 | 0 – 2 |
-| `top_p` | 0.95 | 0 – 1 |
-| `top_k` | 40 | 1 – 200 |
-| `max_tokens` | 512 | 16 – 4096 |
+| `temperature` | 0.8 | 0 - 2 |
+| `top_p` | 0.95 | 0 - 1 |
+| `top_k` | 40 | 1 - 200 |
+| `max_tokens` | 512 | 16 - 4096 |
 | `seed` | 0 (random) | any int |
 
 Ignored silently: `presence_penalty`, `frequency_penalty`, `logit_bias`,
@@ -259,7 +259,7 @@ Pick the model from the dropdown.
 | Samsung S24 Ultra (Adreno 750) | Gemma 4 E2B | GPU | 32.78 |
 | Samsung S10 | Gemma 4 E2B | CPU | 2.7 |
 
-Cold load is 30–60 s (first time the XNNPACK weight cache is built).
+Cold load is 30-60 s (first time the XNNPACK weight cache is built).
 Warm load is ~4 s.
 
 ---
@@ -322,7 +322,7 @@ there is demand.
 ## Support
 
 VicinoLLM is free. Zero cloud, zero ads, zero telemetry. If it's useful
-to you, a crypto tip keeps development going — addresses with QR codes
+to you, a crypto tip keeps development going - addresses with QR codes
 are in the **About** tab. No Ko-fi, no Stripe, no KYC.
 
 - **Source**: <https://github.com/angolo40/vicino-llm>
@@ -334,7 +334,7 @@ are in the **About** tab. No Ko-fi, no Stripe, no KYC.
 **VicinoLLM code**: Apache License 2.0 (see [LICENSE](./LICENSE) and
 [NOTICE.md](./NOTICE.md) for full attribution).
 
-**Important — VicinoLLM is not a "Gemma Derivative".** VicinoLLM is an
+**Important - VicinoLLM is not a "Gemma Derivative".** VicinoLLM is an
 *inference runtime* built on Google's [LiteRT-LM SDK](https://ai.google.dev/edge/litert-lm).
 It does not train, fine-tune, or modify any Gemma model. Gemma model
 files (`*.litertlm`) are **never bundled** in this APK and are never
